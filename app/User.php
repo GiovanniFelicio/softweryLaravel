@@ -16,7 +16,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 
+        'login', 
+        'email', 
+        'password',
+        'date_birth',
+        'number',
+        'company_id'
     ];
 
     /**
@@ -36,4 +42,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected $table = 'SFT_USER';
 }

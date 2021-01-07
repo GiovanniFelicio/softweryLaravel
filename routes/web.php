@@ -19,4 +19,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::prefix('company')->middleware('auth')->group(function() {
+    Route::get('/', 'CompanyController@index')->name('companyIndex');
+});
+
+Route::prefix('user')->middleware('auth')->group(function() {
+    Route::get('/', 'UserController@index')->name('userIndex');
+    Route::get('/create', 'UserController@create')->name('userCreate');
+    Route::post('/create', 'UserController@save')->name('userSave');
+});

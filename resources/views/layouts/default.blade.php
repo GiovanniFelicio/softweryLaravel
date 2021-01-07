@@ -15,8 +15,20 @@
   <link rel="stylesheet" href="/css/OverlayScrollbars.min.css">
   <link rel="stylesheet" href="/css/daterangepicker.css">
   <link rel="stylesheet" href="/css/summernote-bs4.min.css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
+
+  <div id="preloader">
+    <div class="inner">
+      <div class="bolas">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+
 <div class="wrapper">
 
   <!-- Navbar -->
@@ -451,17 +463,44 @@
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
+        <hr/>
+        <div id="messages">
+          @if (count($errors) > 0)
+            <div class="alert alert-danger row d-flex align-items-center">
+              <div class="col-md-10">
+                <ul>
+                  @foreach ($errors->all() as $error)
+                    <li>{{$error}}</li>
+                  @endforeach
+                </ul>
+              </div>
+              <div class="col-md-2 d-flex justify-content-end">
+                <button type="button" id="closeMessage" class="btn text-white">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+            @elseif(session()->has('success'))
+            <div class="alert alert-success row d-flex align-items-center">
+              <div class="col-md-10">
+                {{session()->get('success')}}
+              </div>
+              <div class="col-md-2 d-flex justify-content-end">
+                <button type="button" id="closeMessage" class="btn text-white">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+            @endif
+        </div>
+        @yield('content')
       </div><!-- /.container-fluid -->
     </div>
    
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.1.0-rc
-    </div>
+    @yield('footer')
   </footer>
 
   <!-- Control Sidebar -->
@@ -470,13 +509,10 @@
   </aside>
   <!-- /.control-sidebar -->
 </div>
-<!-- ./wrapper -->
 
-<!-- jQuery -->
 <script src="/js/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
 <script src="/js/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
@@ -492,5 +528,20 @@
 <script src="/js/adminlte.js"></script>
 <script src="/js/demo.js"></script>
 <script src="/js/pages/dashboard.js"></script>
+
+<script type="text/javascript">
+  $(window).on('load', function () {
+    $('#preloader .inner').fadeOut();
+    $('#preloader').delay(350).fadeOut('slow');
+    $('body').delay(350).css({ 'overflow': 'visible' });
+  })
+
+  $('#closeMessage').on('click', function (e) {
+    $('#messages').fadeOut(500, function () {
+      $('#messages').remove();
+    });
+  }); 
+
+</script>
 </body>
 </html>
