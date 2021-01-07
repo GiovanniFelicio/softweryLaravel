@@ -3,11 +3,21 @@
 namespace App\Services;
 
 use App\User;
+use App\Validators\Validators;
+use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Hash;
+use InvalidArgumentException;
 
 class UserService {
-    
+
+    private $userRepository;
+
+    public function __construct() {
+        $this->userRepository = new UserRepository();
+    }
+
     public function generate_and_create($value) {
+
         $user = new User();
 
         $user->name = $value['name'];
@@ -21,5 +31,3 @@ class UserService {
         return $user;
     }
 }
-
-?>

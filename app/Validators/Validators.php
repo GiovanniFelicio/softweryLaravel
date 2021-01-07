@@ -9,8 +9,8 @@ class Validators {
     public static function userValidator($value) {
         $validator = Validator::make($value, [
             'name' => 'required|string|max:255',
-            'email' => 'required|unique:SFT_USER|string',
-            'login' => 'required|unique:SFT_USER|string',
+            'email' => 'required|unique:sft_user|string',
+            'login' => 'required|unique:sft_user|string',
             'password' => 'required'
         ],[
             'name.required' => 'Name is required',

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSftCompanyTable extends Migration
+class CreateSftMenuTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateSftCompanyTable extends Migration
      */
     public function up()
     {
-        Schema::create('sft_company', function (Blueprint $table) {
+        Schema::create('sft_menu', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->boolean('active');
+            $table->string('path');
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateSftCompanyTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sft_company');
+        Schema::dropIfExists('sft_menu');
     }
 }

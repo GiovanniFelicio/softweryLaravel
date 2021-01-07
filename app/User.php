@@ -2,13 +2,17 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\Cache;
+use Watson\Rememberable\Rememberable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
     use Notifiable;
+
+    use Rememberable;
 
     /**
      * The attributes that are mass assignable.
@@ -16,9 +20,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 
-        'login', 
-        'email', 
+        'name',
+        'login',
+        'email',
         'password',
         'date_birth',
         'number',
@@ -43,5 +47,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected $table = 'SFT_USER';
+    protected $table = 'sft_user';
+
+    public function menus() {
+        return $this->belongsToMany(
+            Menu::class,
+            'sft_menu_user',
+            'menu_id',
+            'user_id'
+        );
+    }
 }

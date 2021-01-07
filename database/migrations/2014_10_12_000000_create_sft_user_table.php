@@ -13,7 +13,7 @@ class CreateSftUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('SFT_USER', function (Blueprint $table) {
+        Schema::create('sft_user', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
@@ -35,6 +35,6 @@ class CreateSftUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('SFT_USER');
+        Schema::dropIfExists('sft_user');
     }
 }
