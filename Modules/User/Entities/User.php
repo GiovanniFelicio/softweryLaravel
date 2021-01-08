@@ -3,7 +3,6 @@
 namespace Modules\User\Entities;
 
 use Watson\Rememberable\Rememberable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -48,8 +47,8 @@ class User extends Authenticatable
 
     protected $table = 'sft_user';
 
-    public function menus()
-    {
+    public function menus() {
+
         return $this->belongsToMany(
             Menu::class,
             'sft_menu_user',
