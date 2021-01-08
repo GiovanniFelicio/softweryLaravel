@@ -256,6 +256,9 @@
           </div><!-- /.col -->
         </div><!-- /.row -->
         <hr/>
+        <div id="app">
+            <example-component></example-component>
+        </div>
         <div id="messages">
           @if (count($errors) > 0)
             <div class="alert alert-danger row d-flex align-items-center">
@@ -320,6 +323,7 @@
 <script src="/js/adminlte.js"></script>
 <script src="/js/demo.js"></script>
 <script src="/js/pages/dashboard.js"></script>
+<script src="/js/user.js"></script>
 
 <script type="text/javascript">
   $(window).on('load', function () {
