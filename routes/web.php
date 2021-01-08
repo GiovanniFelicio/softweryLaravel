@@ -23,8 +23,8 @@ Route::prefix('company')->middleware('auth')->group(function() {
     Route::get('/', 'CompanyController@index')->name('companyIndex');
 });
 
-Route::prefix('user')->middleware(['auth', 'menuPermission'])->group(function() {
-    Route::get('/', 'UserController@index')->name('userIndex');
-    Route::get('/create', 'UserController@create')->name('userCreate');
-    Route::post('/create', 'UserController@save')->name('userSave');
-});
+// Route::prefix('user')->middleware(['auth', 'menuPermission'])->group(function() {
+//     Route::get('/', 'UserController@index')->name('userIndex');
+//     Route::get('/create', 'UserController@create')->name('userCreate');
+//     Route::post('/create', 'UserController@save')->name('userSave');
+// });
