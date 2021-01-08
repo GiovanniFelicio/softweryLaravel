@@ -23,7 +23,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user.index');
+        return view('user::index');
     }
 
     /**
@@ -32,7 +32,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        return view('user::create');
     }
 
     /**

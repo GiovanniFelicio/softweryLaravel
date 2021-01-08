@@ -16,5 +16,5 @@ Route::prefix('user')->middleware(['auth', 'menuPermission'])->group(function ()
     Route::get('/create',
         'UserController@create'
     )->name('userCreate');
-    Route::post('/create', 'UserController@save')->name('userSave');
+    Route::post('/create', 'UserController@store')->name('userStore');
 });

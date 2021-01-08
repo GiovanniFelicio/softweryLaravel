@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form id="userCreate" action="{{route('userSave')}}" method="POST">
+<form id="userCreate" action="{{route('userStore')}}" method="POST">
     @csrf
     <div class="card">
         <div class="card-header">
@@ -14,7 +14,7 @@
                 <div class="col-md-6">
                     <input type="text" class="form-control" id="inputName" name="name">
                 </div>
-            </div>            
+            </div>
             <div class="form-group row">
                 <label for="inputLogin" class="col-sm-2 col-form-label">Login: </label>
                 <div class="col-md-6">
@@ -58,7 +58,7 @@
             <label class="h4 text-primary">General settings</label>
         </div>
         <div class="card-body">
-            
+
         </div>
     </div>
 </form>
